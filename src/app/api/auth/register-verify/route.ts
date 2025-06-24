@@ -30,7 +30,8 @@ export const POST = async (req: NextRequest) => {
     });
 
     if (verification.verified && verification.registrationInfo) {
-      const { credentialID, credentialPublicKey, counter } = verification.registrationInfo;
+      const { credential } = verification.registrationInfo;
+      const { id: credentialID, publicKey: credentialPublicKey, counter } = credential;
 
       // ユーザーとパスキー情報をSupabaseに保存
       const { data: userData, error: userError } = await supabase

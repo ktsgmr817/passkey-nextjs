@@ -56,9 +56,10 @@ export const POST = async (req: NextRequest) => {
       expectedChallenge: session.challenge,
       expectedOrigin: process.env.EXPECTED_ORIGIN!,
       expectedRPID: process.env.RP_ID!,
-      authenticator: {
-        credentialID: Buffer.from(credentialData.credential_id, 'base64'),
-        credentialPublicKey: Buffer.from(credentialData.public_key, 'base64'),
+      requireUserVerification: true,
+      credential: {
+        id: Buffer.from(credentialData.credential_id, 'base64').toString('base64url'),
+        publicKey: Buffer.from(credentialData.public_key, 'base64'),
         counter: credentialData.counter,
       },
     });

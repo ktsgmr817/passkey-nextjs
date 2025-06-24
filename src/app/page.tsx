@@ -83,7 +83,8 @@ export default function Home() {
       setUser(null);
       setMessage('ログアウトしました');
     } catch (error) {
-      setError('ログアウトに失敗しました');
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+      setError(`ログアウトに失敗しました: ${errorMessage}`);
     } finally {
       setLoading(false);
     }
