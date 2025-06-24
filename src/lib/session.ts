@@ -11,4 +11,5 @@ export const sessionOptions: SessionOptions = {
 export interface SessionData {
   userName: string;
   challenge: string;
+  isLoggedIn: boolean;
 }
